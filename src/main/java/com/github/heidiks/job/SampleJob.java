@@ -4,25 +4,27 @@ import com.github.heidiks.service.SampleService;
 import org.quartz.DisallowConcurrentExecution;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.time.LocalDateTime;
 
 @DisallowConcurrentExecution
 public class SampleJob implements Job {
+
+    private static final Logger LOG = LoggerFactory.getLogger(SampleJob.class);
 
     @Autowired
     private SampleService service;
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) {
-        System.out.println("Starting job " + LocalDateTime.now().toString());
+        LOG.info("Starting job");
         try {
             service.hello();
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("End job " + LocalDateTime.now().toString());
+        LOG.info("Finishing job");
     }
 }
