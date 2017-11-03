@@ -64,9 +64,9 @@ public class SchedulerConfig {
 
     @Bean(name = "sampleJobTrigger")
     public CronTriggerFactoryBean sampleJobTrigger(@Qualifier("sampleJobDetail") JobDetail jobDetail,
-                                                   @Value("${samplejob.frequency}") long frequency) {
+                                                   @Value("${samplejob.frequency}") String frequency) {
 //        return createTrigger(jobDetail, frequency);
-        return createCronTrigger(jobDetail, "0 * * * * ?");
+        return createCronTrigger(jobDetail, frequency);
     }
 
     private static JobDetailFactoryBean createJobDetail(Class jobClass) {
