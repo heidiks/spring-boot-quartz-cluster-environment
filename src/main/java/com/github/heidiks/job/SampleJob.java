@@ -18,6 +18,7 @@ public class SampleJob implements Job {
     public void execute(JobExecutionContext jobExecutionContext) {
         System.out.println("Starting job " + LocalDateTime.now().toString());
         try {
+            service.hello();
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
