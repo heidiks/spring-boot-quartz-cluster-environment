@@ -9,7 +9,7 @@
 - MySQL (try docker: https://hub.docker.com/_/mysql/)
 
 ### Run
-- Apply resources/db.changelog.sql.quartz.tables.mysql.sql to your database
+- Apply resources/db.changelog.sql/quartz_tables_mysql.sql to your database
 - Run two or more instances:
 ```sh
 $ mvn spring-boot:run
